@@ -39,7 +39,7 @@ submitButton.addEventListener("click", function () {
       const floorPrice = response.data.ownedNfts[i].contractMetadata.openSea.floorPrice || 0;
       totalFloor1 = totalFloor1 + floorPrice;
       console.log(floorPrice);
-      loopDiv += `<div><a href = "https://opensea.io/assets/ethereum/${link}"><img src = "${nftImage}"></img></a> <br>Opensea Floor Price: ${floorPrice}</div>`;
+      loopDiv += `<div><img src = "${nftImage}"></img> <br>Opensea Floor Price: ${floorPrice}</div>`;
       displayNft.innerHTML = loopDiv;
     }
     const totalFloor = document.getElementById("total-floor");
