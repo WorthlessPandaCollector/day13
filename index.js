@@ -50,6 +50,8 @@ submitButton.addEventListener("click", function(){
         
 
             }
+
+
         const totalFloor = document.getElementById("total-floor");
         totalFloor.innerHTML = `Total floor price: ${totalFloor1}`;
         console.log(totalFloor1);
@@ -60,12 +62,78 @@ submitButton.addEventListener("click", function(){
 
 })
 
-
-
 })
 
-const resetButton = document.getElementById("reset-button");
 
+const erc20Button = document.getElementById("ERC20-button");
+
+erc20Button.addEventListener("click", function(){
+    const userAddress = document.getElementById("user-address");
+    const apiKey = "wfgshFmhSqarVVlO5sMQUE-nhymDahvY";
+    const baseURL = `https://eth-mainnet.g.alchemy.com/v2/${apiKey}`;
+    
+    const config = {
+        method: "post",
+        url: baseURL,
+        data: {
+            method: "alchemy_getTokenBalances",
+            params: [`${userAddress.value}`]
+        }
+    }
+
+
+
+    axios(config).then((response) => {
+        console.log(response.data)
+
+        let loopDiv = "";
+        for (let i=0; i <response.data.result.tokenBalances.length;i++){
+            const displayTokenBalance = document.getElementById("all-ercs");
+            const ercAddress = response.data.result.tokenBalances[i].contractAddress;
+            const options = {
+                method: "post",
+                url: baseURL,
+                data:{
+                    method: "alchemy_getTokenMetadata",
+                    params: [`${ercAddress}`]
+                }
+            }
+            axios.request(options).then(metadata => {
+                console.log(metadata);
+                const metaName = metadata.data.result.name;
+                console.log(metaName);
+
+                loopDiv += `<div> Token: ${ercAddress} -- ${metaName} </div>`;
+                displayTokenBalance.innerHTML = loopDiv;
+
+            });
+
+            
+
+
+
+        }
+
+    })
+    
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// reset input 
+const resetButton = document.getElementById("reset-button");
 resetButton.addEventListener("click", function(){
     document.getElementById("user-address").value ="";
 })
