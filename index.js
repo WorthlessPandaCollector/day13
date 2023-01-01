@@ -1,6 +1,5 @@
 import axios from "axios";
-// we use `import axios from "axios"` which is another way of saying `const axios = require("axios")`
-// it is jsut better supported in the browser!
+
 
 const submitButton = document.getElementById("submit-button");
 
@@ -65,9 +64,16 @@ submitButton.addEventListener("click", function(){
 })
 
 
+
+
+
+
 const erc20Button = document.getElementById("ERC20-button");
 
 erc20Button.addEventListener("click", function(){
+
+
+    
     const userAddress = document.getElementById("user-address");
     const apiKey = "wfgshFmhSqarVVlO5sMQUE-nhymDahvY";
     const baseURL = `https://eth-mainnet.g.alchemy.com/v2/${apiKey}`;
@@ -90,6 +96,7 @@ erc20Button.addEventListener("click", function(){
         for (let i=0; i <response.data.result.tokenBalances.length;i++){
             const displayTokenBalance = document.getElementById("all-ercs");
             const ercAddress = response.data.result.tokenBalances[i].contractAddress;
+            const ercBalanace = response.data.result.tokenBalances[i].tokenBalance;
             const options = {
                 method: "post",
                 url: baseURL,
@@ -101,9 +108,18 @@ erc20Button.addEventListener("click", function(){
             axios.request(options).then(metadata => {
                 console.log(metadata);
                 const metaName = metadata.data.result.name;
+                const metaSymbol = metadata.data.result.symbol;
+                const decimals = metadata.data.result.decimals;
+                let math = ercBalanace / Math.pow(10, decimals);
+                let convertBalance = math.toFixed(2);
                 console.log(metaName);
 
-                loopDiv += `<div> Token: ${ercAddress} -- ${metaName} </div>`;
+                loopDiv += `<div> ${metaName} |||| ${metaSymbol} <br> Contract Address: <a href="https://etherscan.io/address/${ercAddress}"> ${ercAddress}</a> -- <br> 
+                Balance: 
+                ${convertBalance} ${metaSymbol}
+                <br>
+                <br>
+                </div>`;
                 displayTokenBalance.innerHTML = loopDiv;
 
             });
