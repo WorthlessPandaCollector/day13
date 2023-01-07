@@ -1,67 +1,97 @@
-header {
-    text-align: center;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    border: solid;
-    background-color: rgb(149, 212, 154);
-}
-
-div {
-    /* display:fixed; */
-    color:blue;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    /* border: 5px solid lightgreen; */
-
+body {
+    font-family:'Space Mono';
+    background-color :black;
+    color: white;
+    margin: 0px;
+    padding:0px;
 
 }
-input {
-    position:absolute;
-    left: 25%;
-    width: 50%;
-    height: 30px;
-    border:solid 5px;
 
-
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: large;
-    text-align: center;
+.background-header {
+    position: absolute;
+    height: 250px;
+    min-width: -webkit-fill-available;
+    background-color: #7E4DE4;
+    top: -100px;
+    filter: blur(1px);
+    box-shadow: 0px 2px 2px 4px rgb(51 150 156 / 91%);
+    border-radius: 22px;
 }
-button {
-
-    width: auto;
-
-
-}
-button:hover{
-    content:"uhoh"
-}
-
-#inputs {
-    background-color: rgb(44, 194, 199);
+.header-container {
+    position: absolute;
+    height:150px;
+    min-width: -webkit-fill-available;
+    font-style: normal;
+    font-weight:700;
+    font-size: 40px;
+    line-height: 58px;
     display:flex;
-    flex-direction:column;
     align-items: center;
+    justify-content: center;
+    color: rgba(0,0,0,0.8);
+    text-shadow: -5px -2px 0px rgba(136, 43, 60, 0.25);
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    position: absolute;
+    min-width: -webkit-fill-available;
+    top: 106px;
 }
 
+.input-default {
+    width: 617px;
+    height: 45px;
+    font-size: 20px;
+    font-weight: 200;
+    font-style: normal;
+    color: black;
+    padding: 10;
+    border-radius: 0px 16px 0px 20px;
+}
+.button-default {
 
+    width: 116px;
+    height: 32px;
+    background: #7D4DE4;
+  
+    border-radius: 20px 0px 20px 0px;
+    box-shadow: inset 303px 0px 4px -116px rgb(63 30 133 / 56%);
+    box-sizing: border-box;
+    margin: 0px -25px;
+}
+
+#nftbuttons {
+    position:absolute;
+    top:0px;
+
+}
 
 #all-nfts {
-
-    float:left;
-    width:65%;
     display:flex;
     flex-wrap:wrap;
-    background-color: bisque;
+    position: absolute;
+    top:200px;
+    max-width: 1420px;
+    min-width: 20px;
+    justify-content: center;
+    align-items: baseline;
+    gap: 30px 30px;
     
 
 }
-#all-nfts img{
+/* #all-nfts img{
     width: 200px;
     height: 200px;
     flex: 0 0 auto;
 
-}
+} */
 #all-nfts img:hover {
-    transform: scale(1,1.25);
+    /* transform: scale(1,1.25); */
+    border-radius: 47px 120px 10px 120px;
 }
 #total-floor {
     height: auto;
@@ -73,13 +103,56 @@ button:hover{
 }
 
 #all-ercs {
-    float:right;
+    position:absolute;
+    top: 200px;
+    font-size:20px;
+    right:0;
+    
     display:flex;
     flex-wrap:wrap;
     width:30%;    
     padding: 20px;
     min-width: 10px;
-    background-color: greenyellow;
-    
+}
 
+.nft-card-box {
+    width:330px;
+    height:477px;
+    background: rgba(125, 77, 228, 0.44);
+    box-shadow: 3px 2px 15px #59adb3;
+    border-radius: 45px;
+}
+
+.nft-img-container {
+    display: flex;
+    padding: 0px 0px 0px 0px;
+    width: 330px;
+    height: 295px;
+    border-radius: 47px 47px 10px 10px;
+}
+
+.info-box {
+    display:flex;
+    height: 160px;
+    flex-direction:column;
+    justify-content: space-evenly;
+    padding: 0px 10px 0px 10px;
+}
+
+.info-top-title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 90%;
+    display: flex;
+
+}
+
+.info-top-collection {
+    font-style: normal;
+    font-weight:400;
+    font-size:14px;
+    line-height:69%;
+    display:flex;
+    flex-direction: row-reverse;
 }

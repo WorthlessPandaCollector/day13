@@ -1,28 +1,43 @@
 <html>
     <head>
         <link rel="stylesheet" href="index.css">
+        <link href="https://fonts.googleapis.com/css2?family=Space+Mono" rel="stylesheet">
       </head>
     <body>
+            <div class ="background-header"></div>
+            <div class="header-container">NFT VIEWHORE</div>
 
-        <header>
-            <h1>ART </h1>
-        
-        </header>
-
-        <div id="input"> <input id ="user-address" type="text" /><br>
-        <br>
+        <div class = "container">
+            <input class = "input-default" placeholder ="Enter ETH Address" type="text" id="user-address">
+            <button class = "button-default" id = "submit-button">Submit</button>
         </div>
+
+        <div class="container" id="nftbuttons">
+        
+            <!-- <button id="ERC20-button">Find ERC20 Tokens (ens doesn't work)</button><br>
+            <button id="reset-button"> Reset </button><br> -->
+            <div id="total-floor"></div>
+        </div>
+        <!-- <div id="all-nfts" class="container"></div> -->
+        <div id="all-ercs"></div>
+        <div id="all-nfts"></div>
+        </div>
+
+
+
+
+<!-- 
 
 
         <div id="inputs">
        
-        <button id="ERC20-button">Find ERC20 Tokens (ens doesn't work)</button><br>
-        <button id="submit-button"> Find NFTS(ens works) </button><br>
-        <button id="reset-button"> Reset </button><br>
-        <div id="total-floor"></div>
-        </div>
-        <div id="all-nfts"></div>
-        <div id="all-ercs"></div>
+
+ -->
+
+
+
+
+
 
 
         <script src="bundle.js"></script>
