@@ -1,114 +1,33 @@
 import axios from "axios";
 import { getDefaultProvider } from "ethers";
 const getAPI = require("./api.js");
+const createAndAppendElementsAndClasses = require('./createAndAppendElementsAndClasses');
+
 
 
 const submitButton = document.getElementById("submit-button");
+
+
+
 
 submitButton.addEventListener("click", function(){
     console.log("click click click");
     const userAddress = document.getElementById("user-address");
     console.log(userAddress.value);
-
-
-
-    // my alchemy API info.
+            // my alchemy API info.
+  
     getAPI(userAddress).then(response => {
  
         console.log(response.data);
-        // loop
-        // let loopDiv = "";
-        let totalFloor1 = 0;  
-        const allNfts = document.getElementById('all-nfts');
-        allNfts.classList.add('nft-card-row');
-
-            for(let i=0; i < response.data.ownedNfts.length; i++) {
-
-                const nft = response.data.ownedNfts[i];
-
-                
-                const nftCard = document.createElement('div');
-                nftCard.classList.add('nft-card-box');
-
-                if(!nft.media[0].gateway) {
-                    continue;
-                };
-
-                if(nft.title === "") {
-                    nft.title = "No Title";
-                };
+        createAndAppendElementsAndClasses(response);
 
 
-
-                // Image container
-                const nftImageContainer = document.createElement('img');
-                nftImageContainer.classList.add('nft-img-container');
-
-                const nftImageURL = nft.media[0].gateway;
-                nftImageContainer.src = nftImageURL;
-
-
-                // Infobox container
-                const nftInfoBox = document.createElement('div');
-                nftInfoBox.classList.add('info-box');
-
-                const nftInfoTopTitle = document.createElement('div');
-                nftInfoTopTitle.classList.add('info-top-title');
-
-                const nftInfoTopCollection = document.createElement('div');
-                nftInfoTopCollection.classList.add('info-top-collection');
-
-                const nftInfoBottomOwner = document.createElement('div');
-                nftInfoBottomOwner.classList.add('info-bottom-owner');
-
-                const nftInfoBottomFloor = document.createElement('div');
-                nftInfoBottomFloor.classList.add('info-bottom-floor');
-
-                const nftCollection = nft.contractMetadata.openSea.collectionName;
-                nftInfoTopCollection.innerHTML = `${nftCollection}`;
-
-                const nftTitle = nft.title;
-                nftInfoTopTitle.innerHTML = `${nftTitle}`;
-
-                const nftBalance = nft.balance;
-                nftInfoBottomOwner.innerHTML = `Owned: ${nftBalance}`;
-
-                const nftFloor = nft.contractMetadata.openSea.floorPrice;
-                nftInfoBottomFloor.innerHTML = `Floor Price: ${nftFloor}`;
-
-
-                // appendages
-                nftInfoBox.appendChild(nftInfoTopTitle);
-                nftInfoBox.appendChild(nftInfoTopCollection)
-                nftInfoBox.appendChild(nftInfoBottomOwner);
-                nftInfoBox.appendChild(nftInfoBottomFloor);
-                nftCard.appendChild(nftImageContainer);
-                nftCard.appendChild(nftInfoBox);
-                allNfts.appendChild(nftCard);
-
-                const floorPriceCalc = nftFloor || 0;
-                totalFloor1 = totalFloor1 + floorPriceCalc;
-                console.log(floorPriceCalc);
-
-
-                // loopDiv += `<div class = "nft-stuff"><img src = "${nftImage}"></img></div> <br><div class="floorPrice">Opensea Floor Price: ${floorPrice}</div>`;
-                // displayNft.innerHTML = loopDiv;
-        
-
-            }
-
-
-        const totalFloor = document.getElementById("total-floor");
-        totalFloor.innerHTML = `Total floor price: ${totalFloor1}`;
-        console.log(totalFloor1);
-
-
-
-
-
+    })
 })
 
-})
+
+
+
 
 
 
@@ -195,9 +114,9 @@ submitButton.addEventListener("click", function(){
 
 
 
-// reset input 
-const resetButton = document.getElementById("reset-button");
-resetButton.addEventListener("click", function(){
-    document.getElementById("user-address").value ="";
-})
+// // reset input 
+// const resetButton = document.getElementById("reset-button");
+// resetButton.addEventListener("click", function(){
+//     document.getElementById("user-address").value ="";
+// })
 
