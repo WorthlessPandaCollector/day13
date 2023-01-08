@@ -140,6 +140,7 @@ const createAndAppendElementsAndClasses = require('./createAndAppendElementsAndC
 const submitButton = document.getElementById("submit-button");
 const allTheNFTs = document.getElementById('all-nfts');
 submitButton.addEventListener("click", function () {
+  allTheNFTs.innerHTML = "";
   console.log("click click click");
   const userAddress = document.getElementById("user-address");
   console.log(userAddress.value);
