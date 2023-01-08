@@ -85,7 +85,7 @@ function createAndAppendElementsAndClasses(response) {
 
         // calculates combined floor prices for entire wallet collection
         totalFloor1 = calcFloorPrice(nftFloor, totalFloor1);
-        
+
         // grab total-floor element 
         const totalFloor = document.getElementById("total-floor");
         totalFloor.innerHTML = `Total floor price: ${totalFloor1}`;

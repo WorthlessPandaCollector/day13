@@ -12,11 +12,10 @@ function getAPI(userAddress) {
     };
 
 
-    return new Promise(resolve =>
-        {
-            axios(config).then(response =>
-                resolve(response));
-        })
+    return new Promise(resolve => {
+        axios(config).then(response =>
+            resolve(response));
+    })
 }
 
 module.exports = getAPI;

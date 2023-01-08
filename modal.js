@@ -4,33 +4,29 @@ const modalContent = document.getElementById('modal-content');
 const closeModalButton = document.getElementById('close-modal');
 
 function openModal(nft) {
-
-
     document.getElementById("modal").style.display = "block";
     document.getElementById("modal-content").innerHTML = `${nft.title}`;
-    
-    
     const modalImage = document.getElementById('modal-img')
     const imageSRC = document.createElement('img');
 
-
-
     imageSRC.classList.add('img-modal');
+
+
+
     const modalImageURL = nft.media[0].gateway;
     imageSRC.src = modalImageURL
 
-
-
-    modalImage.appendChild(imageSRC);
+    // modalImage.appendChild(imageSRC);
+    modalContent.appendChild(imageSRC);
 
 
 }
 
-function closeModal(){
-    modal.style.display="none";
+function closeModal() {
+    modal.style.display = "none";
 }
 
-closeModalButton.onclick = function() {
+closeModalButton.onclick = function () {
     closeModal();
 }
 

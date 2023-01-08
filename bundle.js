@@ -19,15 +19,15 @@ module.exports = getAPI;
 
 },{"axios":124}],2:[function(require,module,exports){
 
-function calcFloorPrice(nftFloor, totalFloor1){
+function calcFloorPrice(nftFloor, totalFloor1) {
     const floorPriceCalc = nftFloor || 0;
     totalFloor1 = totalFloor1 + floorPriceCalc;
     console.log(floorPriceCalc);
     return totalFloor1;
-    }
+}
 
 
-module.exports=calcFloorPrice;
+module.exports = calcFloorPrice;
 },{}],3:[function(require,module,exports){
 const calcFloorPrice = require('./calcFloorPrice');
 const openModal = require('./modal');
@@ -116,7 +116,7 @@ function createAndAppendElementsAndClasses(response) {
 
         // calculates combined floor prices for entire wallet collection
         totalFloor1 = calcFloorPrice(nftFloor, totalFloor1);
-        
+
         // grab total-floor element 
         const totalFloor = document.getElementById("total-floor");
         totalFloor.innerHTML = `Total floor price: ${totalFloor1}`;
@@ -138,6 +138,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const getAPI = require("./api.js");
 const createAndAppendElementsAndClasses = require('./createAndAppendElementsAndClasses');
 const submitButton = document.getElementById("submit-button");
+const allTheNFTs = document.getElementById('all-nfts');
 submitButton.addEventListener("click", function () {
   console.log("click click click");
   const userAddress = document.getElementById("user-address");
@@ -221,33 +222,29 @@ const modalContent = document.getElementById('modal-content');
 const closeModalButton = document.getElementById('close-modal');
 
 function openModal(nft) {
-
-
     document.getElementById("modal").style.display = "block";
     document.getElementById("modal-content").innerHTML = `${nft.title}`;
-    
-    
     const modalImage = document.getElementById('modal-img')
     const imageSRC = document.createElement('img');
 
-
-
     imageSRC.classList.add('img-modal');
+
+
+
     const modalImageURL = nft.media[0].gateway;
     imageSRC.src = modalImageURL
 
-
-
-    modalImage.appendChild(imageSRC);
+    // modalImage.appendChild(imageSRC);
+    modalContent.appendChild(imageSRC);
 
 
 }
 
-function closeModal(){
-    modal.style.display="none";
+function closeModal() {
+    modal.style.display = "none";
 }
 
-closeModalButton.onclick = function() {
+closeModalButton.onclick = function () {
     closeModal();
 }
 

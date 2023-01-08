@@ -7,25 +7,21 @@ const createAndAppendElementsAndClasses = require('./createAndAppendElementsAndC
 
 const submitButton = document.getElementById("submit-button");
 
+const allTheNFTs = document.getElementById('all-nfts');
 
 
-
-submitButton.addEventListener("click", function(){
+submitButton.addEventListener("click", function () {
     console.log("click click click");
     const userAddress = document.getElementById("user-address");
     console.log(userAddress.value);
-            // my alchemy API info.
-  
+    // my alchemy API info.
+
     getAPI(userAddress).then(response => {
- 
+
         console.log(response.data);
         createAndAppendElementsAndClasses(response);
-
-
     })
 })
-
-
 
 
 
