@@ -20,7 +20,7 @@ function openModal(nft) {
     imageSRC.src = modalImageURL
 
 
-    modalImage.removeChild(imageSRC);
+
     modalImage.appendChild(imageSRC);
 
 
